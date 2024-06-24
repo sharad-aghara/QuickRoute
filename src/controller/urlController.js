@@ -1,5 +1,6 @@
-const nanoid = import ('nanoid');
-const { URI } = require('../config/index');
+// const nanoid = import ('nanoid');
+const ShortUniqueId = require('short-unique-id');
+const URL = require('../models/UrlSchema');
 
 async function generateNewShortUrl(req, res) {
     const body = req.body;
@@ -7,9 +8,11 @@ async function generateNewShortUrl(req, res) {
         error: 'URL is required'
     });
 
-    const shortId = nanoid();
+    // const shortId = nanoid();
+    const uid = new ShortUniqueId();
+    const shortId = uid.rnd();
 
-    await URI.create({
+    await URL.create({
         shortId: shortId,
         redirectUrl: body.url,
         visitHistory: [],
