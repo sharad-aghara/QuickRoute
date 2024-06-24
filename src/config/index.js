@@ -2,6 +2,6 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const { URI, PORT } = process.env;  
+const { URI, PORT } = process.env;
 
 module.exports = { URI, PORT };
